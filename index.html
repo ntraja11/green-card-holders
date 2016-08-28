@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Green Card Holders</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="css/gcStyle.css">
+</head>
+
+<body ng-app="gcApp" ng-controller="gcControl">
+	
+	<nav class="navbar navbar-inverse">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="#">{{titleMsg}}</a>
+			</div>
+		</div>
+	</nav>
+
+	<div class="container">
+		<div class="col-sm-12 myFilter">
+
+			<div ng-include="'includes/filterForm.html'"></div>
+			<div ng-include="'includes/newResidentForm.html'"></div>
+
+		</div>
+	</div>
+
+	<div ng-include="'includes/residentContainer.html'"></div>		
+
+</body>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.1.1/ui-bootstrap.min.js"></script>	
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.1.1/ ui-bootstrap-tpls.min.js"></script>
+	<script src="js/gcApp.js"></script>
+	<script src="js/gcController.js"></script>
+	<script src="js/gcFactory.js"></script>
+	<script src="js/gcFilter.js"></script>
+	<script src="js/gcConfig.js"></script>
+</html>

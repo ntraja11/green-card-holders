@@ -1,0 +1,25 @@
+<div class="container">
+	<div class="col-sm-3" ng-repeat="resident in residents | filter: {'profession' : profession} | gcFilter: ageLimit">
+		<div class="thumbnail">
+			<img class="profileImage" ng-src="images/image.jpg" alt="ImageText">
+			<div class="caption">
+				<div ng-show="showDetails">
+					<h5>{{"Job : " + resident.profession}}</h5>
+					<h5>{{"Age : " + resident.age + " years"}}</h5>
+				</div>
+				<btn class="btn btn-xs btn-success" ng-show="showDetails" ng-click="showDetails = !showDetails">
+					Hide Details
+				</btn>
+
+				<div ng-show="!showDetails">
+					<h5>{{"First Name : " + resident.firstName}}</h5>
+					<h5>{{"Last Name : " + resident.lastName}}</h5>
+				</div>
+				<btn class="btn btn-xs btn-success" ng-show="!showDetails" ng-click="showDetails = !showDetails">
+					Show Details
+				</btn>
+				
+			</div>				
+		</div>
+	</div>
+</div>

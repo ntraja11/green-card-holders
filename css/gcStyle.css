@@ -1,0 +1,43 @@
+.thumbnail{
+	padding: 10px !important;
+}
+.caption{
+	padding:0 !important;
+}
+.myFilter{
+	background-color: #5cb85c;
+	padding:15px;
+	margin-bottom: 10px;
+}
+.price-form-row{
+	margin-bottom: 10px;
+}
+.form-btn, .row h3{
+	margin-left: 15px;
+}
+.row h3{
+	margin-top: 0;
+	color: white;
+	text-align: center;
+}
+.resident-form-row, .form-btn{
+	margin-top: 10px;
+	padding: 3px 7px;
+	font-size: 14px;
+}
+.input-group{
+	width: 100%;
+}
+.input-group .input-group-addon{
+	width: 25%;
+}
+.input-group .form-control{
+	width: 100%;
+}
+.row-top-buffer{
+	margin-top: 10px;
+}
+.closeBtn{	
+	float: right;
+	margin-right: 15px;
+}
