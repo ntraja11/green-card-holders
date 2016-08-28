@@ -9,17 +9,23 @@ angular.module("gcApp")
 		$scope.residents = [];
 		$scope.newResident = {};
 		$scope.addNewResident = false;
+		$scope.editResident = false;
+		$scope.editedResident = {};
 
 		$scope.loadResidents = function(){
-        	gcFactory.getResidents().then(success, error);
+        	gcFactory.getResidents().then(success, $scope.error);
 
             function success(data){            	
-                $scope.residents = data;
-                //$scope.toggleContactTable = true;
+                $scope.residents = data;                
             }	
-            function error(er){
-            	console.log("Loading error : ", er);
-            }                 
+        }
+
+        $scope.success = function(){
+        	$scope.loadResidents();
+        }
+
+        $scope.error = function(errMsg){
+        	console.log("Loading error : ", errMsg);
         }
         
         $scope.applyAgeFilter = function(limit){        	
@@ -30,16 +36,32 @@ angular.module("gcApp")
         }
 
         $scope.addResident = function(){   
-        	gcFactory.addResident($scope.newResident).then(function(){
-        		$scope.loadResidents();
-        	}, function (){
-        		console.log("Loading error : ", er);
-        	});        	
+        	gcFactory.addResident($scope.newResident).then($scope.success, $scope.error);        	
         	$scope.newResident = {};
         }
 
-        $scope.swapForm = function(){
-        	$scope.addNewResident = !$scope.addNewResident;
+        $scope.showEditResident = function(resident){        	
+        	$scope.editedResident = resident;
+        	$scope.toggleEditResidentForm();
+        }
+
+        $scope.updateResident = function(){        	
+        	gcFactory.editResident($scope.editedResident).then($scope.success, $scope.error);
+        	$scope.editedResident = {};
+        }
+
+        /*$scope.deleteResident = function(resident){
+        	gcFactory.deleteResident(resident).then(function(){
+        		console.log("Delete Success");
+        	}, $scope.error);
+        }*/
+
+        $scope.toggleAddResidentForm = function(){        	
+        	$scope.addNewResident = !$scope.addNewResident;        	
+        }
+
+        $scope.toggleEditResidentForm = function(){        	
+        	$scope.editResident = !$scope.editResident;
         }
 
 

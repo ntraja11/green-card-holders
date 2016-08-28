@@ -32,13 +32,13 @@
 			</div>
 		</div>
 
-		<btn class="btn btn-xs btn-primary form-btn" ng-show="addNewResident" ng-click="addResident()">Submit New Resident</btn>
+		<btn class="btn btn-xs btn-primary form-btn" ng-click="addResident()">Submit New Resident</btn>
 
 		<div class="col-sm-12 row-top-buffer">
 			<pre>{{newResident | json}}</pre>
 		</div>
 
-		<btn class="btn btn-xs btn-danger form-btn closeBtn" ng-click="swapForm()">Close</btn>
+		<btn class="btn btn-xs btn-danger form-btn closeBtn" ng-click="toggleAddResidentForm()">Close</btn>
 		
 	</div>				
 </div>

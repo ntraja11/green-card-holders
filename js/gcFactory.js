@@ -3,7 +3,7 @@ var url = "https://api.mongolab.com/api/1/databases/ntraja-db/collections/greenc
 
 angular.module("gcApp")
 	.factory("gcFactory", function($http, $q){
-              return {                  
+        return {                  
                   getResidents: function(){
 
                     var deferred = $q.defer();
@@ -29,12 +29,12 @@ angular.module("gcApp")
                         deferred.reject(error);
                       });
                       return deferred.promise;
-                  }
+                  },
 
-                  /*editContact: function(id){
-                    var deferred = $q.defer();
+                  editResident: function(resident){
+                    var deferred = $q.defer();                    
 
-                    $http.put(url+"/"+id, config)
+                    $http.put(url+"/"+resident._id.$oid, resident, config)
                       .success(function(data){
                         deferred.resolve(data);
                       })
@@ -42,12 +42,16 @@ angular.module("gcApp")
                         deferred.reject(error);
                       });
                       return deferred.promise;
-                  },*/
+                  },
 
-                  /*deleteContact: function(id){
+                  /*deleteResident: function(resident){
                     var deferred = $q.defer();
                     
-                    $http.delete(url+"/"+id, config, true)
+                    $http.delete(url+"/"+resident._id.$oid, config, true, {headers: {
+                        "Access-Control-Allow-Origin" : "*",
+                        "Access-Control-Allow-Methods" : "GET,POST,PUT,DELETE,OPTIONS",
+                        "Access-Control-Allow-Headers": "Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With"
+                    }})
                      .success(function(data){
                        deferred.resolve(data);
                      })
@@ -56,5 +60,9 @@ angular.module("gcApp")
                      });
                      return deferred.promise;
                   }*/
+                  
                 }
+
+
+
             });

@@ -1,15 +1,33 @@
+.titleText, .row h3{
+	color: white !important;
+}
+h2{
+	margin-bottom: 20px;
+}
+
+.navBarContainer{
+	text-align: center;
+}
+.myHeader, .titleText{
+	clear: both !important;
+}
+.myHeader a{
+	text-decoration: none;
+}
+.myNavBar, .myFilter{
+	background-color: #5cb85c;
+	border:none;
+}
 .thumbnail{
 	padding: 10px !important;
 }
 .caption{
 	padding:0 !important;
 }
-.myFilter{
-	background-color: #5cb85c;
+.myFilter{	
 	padding:15px;
-	margin-bottom: 10px;
 }
-.price-form-row{
+.price-form-row, .myFilter{
 	margin-bottom: 10px;
 }
 .form-btn, .row h3{
@@ -17,7 +35,6 @@
 }
 .row h3{
 	margin-top: 0;
-	color: white;
 	text-align: center;
 }
 .resident-form-row, .form-btn{
@@ -37,7 +54,9 @@
 .row-top-buffer{
 	margin-top: 10px;
 }
-.closeBtn{	
-	float: right;
+.closeBtn{		
 	margin-right: 15px;
+}
+.editBtn, .deleteBtn, .closeBtn{
+	float: right;
 }

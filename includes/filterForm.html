@@ -1,4 +1,6 @@
-<div class="row price-form-row" ng-show="!addNewResident">
+<div class="row price-form-row" ng-show="!addNewResident && !editResident">
+
+	<h3>Filter By</h3>
 	<div class="col-sm-6">
 		<div class="input-group">
 			<span class="input-group-addon">Profession</span>
@@ -17,5 +19,5 @@
 		</div>
 	</div>
 
-	<btn class="btn btn-xs btn-primary form-btn" ng-click="swapForm()">Add New Resident</btn>
+	<btn class="btn btn-xs btn-primary form-btn" ng-click="toggleAddResidentForm()">Add New Resident</btn>
 </div>

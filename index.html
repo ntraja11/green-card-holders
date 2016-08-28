@@ -10,19 +10,21 @@
 
 <body ng-app="gcApp" ng-controller="gcControl">
 	
-	<nav class="navbar navbar-inverse">
-		<div class="container-fluid">
-			<div class="navbar-header">
-				<a class="navbar-brand" href="#">{{titleMsg}}</a>
+	<nav class="navbar navbar-inverse myNavBar">
+		<div class="container-fluid navBarContainer">
+			<div class="myHeader">
+				<a class="titleText" href="#"><h2>{{titleMsg}}</h2></a>
 			</div>
 		</div>
 	</nav>
 
 	<div class="container">
+
 		<div class="col-sm-12 myFilter">
 
 			<div ng-include="'includes/filterForm.html'"></div>
 			<div ng-include="'includes/newResidentForm.html'"></div>
+			<div ng-include="'includes/editResidentForm.html'"></div>
 
 		</div>
 	</div>
