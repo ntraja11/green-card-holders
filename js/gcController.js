@@ -16,7 +16,7 @@ angular.module("gcApp")
         	gcFactory.getResidents().then(success, $scope.error);
 
             function success(data){            	
-                $scope.residents = data;                
+                $scope.residents = data;
             }	
         }
 
@@ -42,7 +42,10 @@ angular.module("gcApp")
 
         $scope.showEditResident = function(resident){        	
         	$scope.editedResident = resident;
-        	$scope.toggleEditResidentForm();
+            if(!$scope.editResident){
+                $scope.toggleEditResidentForm();
+            }        	
+            window.location.href = "#navBar";
         }
 
         $scope.updateResident = function(){        	
