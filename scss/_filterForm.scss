@@ -1,0 +1,27 @@
+.myFilter{
+	background-color: $themeGreen;
+	border:none;
+	padding:15px;
+}
+
+.price-form-row, .myFilter{
+	margin-bottom: $marginTen;
+}
+
+.resident-form-row, .form-btn{
+	margin-top: $marginTen;
+	padding: 3px 7px;
+	font-size: 14px;
+}
+.input-group{
+	width: 100%;
+}
+.input-group .input-group-addon{
+	width: 25%;
+}
+.input-group .form-control{
+	width: 100%;
+}
+.row-top-buffer{
+	margin-top: $marginTen;
+}

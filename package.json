@@ -1,0 +1,31 @@
+{
+  "name": "greencard-holders",
+  "version": "1.0.0",
+  "description": "Application to show/hold details of green card holders in denmark",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ntraja11/green-card-holders.git"
+  },
+  "keywords": [
+    "green",
+    "card",
+    "holders",
+    "copenhagen",
+    "denmark"
+  ],
+  "author": "Raja Anand",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ntraja11/green-card-holders/issues"
+  },
+  "homepage": "https://github.com/ntraja11/green-card-holders#readme",
+  "devDependencies": {
+    "browser-sync": "^2.15.0",
+    "gulp": "^3.9.1",
+    "gulp-sass": "^2.3.2"
+  }
+}

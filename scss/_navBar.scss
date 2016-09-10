@@ -1,0 +1,29 @@
+
+.myNavBar{
+
+	background-color: $themeGreen;
+	border:none;
+
+	.navBarContainer{
+		text-align: center;
+
+		.myHeader, .titleText{
+			clear: both !important;
+		}
+
+		a{
+			text-decoration: none;
+		}
+	}	
+}
+
+.titleText, .row h3{
+	color: white !important;
+}
+h2{
+	margin-bottom: $marginTen + 100;
+}
+
+
+
+

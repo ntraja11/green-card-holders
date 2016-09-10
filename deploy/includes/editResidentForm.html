@@ -1,0 +1,44 @@
+<div class="resident-form" ng-show="editResident">
+
+	<div class="row resident-form-row">
+
+		<h3>Edit Resident</h3>
+	
+		<div class="col-sm-6">
+			<div class="input-group">
+				<span class="input-group-addon">First Name</span>
+				<input type="text" placeholder="First Name" class="form-control" ng-model="editedResident.firstName">
+			</div>
+		</div>
+
+		<div class="col-sm-6">
+			<div class="input-group">
+				<span class="input-group-addon">Last Name</span>
+				<input type="text" placeholder="Last Name" class="form-control" ng-model="editedResident.lastName">
+			</div>
+		</div>
+
+		<div class="col-sm-6 row-top-buffer">
+			<div class="input-group">
+				<span class="input-group-addon">Profession</span>
+				<input type="text" placeholder="Profession" class="form-control" ng-model="editedResident.profession">
+			</div>
+		</div>
+
+		<div class="col-sm-6 row-top-buffer">
+			<div class="input-group">
+				<span class="input-group-addon">Age</span>
+				<input type="text" placeholder="Age" class="form-control" ng-model="editedResident.age">
+			</div>
+		</div>
+
+		<btn class="btn btn-xs btn-primary form-btn" ng-show="editResident" ng-click="updateResident()">Update Resident</btn>
+
+		<div class="col-sm-12 row-top-buffer">
+			<pre>{{editedResident | json}}</pre>
+		</div>
+
+		<btn class="btn btn-xs btn-danger form-btn closeBtn" ng-click="toggleEditResidentForm()">Close</btn>
+		
+	</div>				
+</div>

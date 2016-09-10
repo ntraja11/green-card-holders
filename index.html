@@ -10,7 +10,7 @@
 
 <body ng-app="gcApp" ng-controller="gcControl">
 	
-	<nav class="navbar navbar-inverse myNavBar" id="navBar">
+	<nav class="navbar navbar-inverse myNavBar" id="navBar" ng-cloak>
 		<div class="container-fluid navBarContainer">
 			<div class="myHeader">
 				<a class="titleText" href="#"><h2>{{titleMsg}}</h2></a>
@@ -18,7 +18,7 @@
 		</div>
 	</nav>
 
-	<div class="container">
+	<div class="container" ng-cloak>
 
 		<div class="col-sm-12 myFilter">
 
@@ -149,10 +149,10 @@
 	<!-- <div ng-include="'includes/residentContainer.html'"></div>		 -->
 
 
-	<div class="container">
+	<div class="container" ng-cloak>
 		<div class="col-sm-3" ng-repeat="resident in residents | filter: {'profession' : profession} | gcFilter: ageLimit | filter: resident.age">
 			<div class="thumbnail">
-				<img class="profileImage" ng-src="{{resident.imageUrl}}" alt="ImageText">
+				<img class="profileImage" ng-cloak ng-src="{{resident.imageUrl}}" alt="ImageText">
 				<div class="caption">
 					<div ng-show="showDetails">
 						<h5>{{"Job : " + resident.profession}}</h5>

@@ -1,0 +1,23 @@
+<div class="row price-form-row" ng-show="!addNewResident && !editResident">
+
+	<h3>Filter By</h3>
+	<div class="col-sm-6">
+		<div class="input-group">
+			<span class="input-group-addon">Profession</span>
+			<input type="text" class="form-control" ng-model="profession" ng-change="applyProfessionFilter(profession)">
+		</div>
+	</div>
+	<div class="col-sm-6">
+		<div class="input-group">
+			<span class="input-group-addon">Age Limit</span>
+			<select name="ageLimit" class="form-control" ng-model="ageLimit" ng-change="applyAgeFilter(ageLimit)">
+				<option value="none">All</option>
+				<option value="1">Below 25</option>
+				<option value="2">25 - 35</option>
+				<option value="3">Above 35</option>
+			</select>
+		</div>
+	</div>
+
+	<btn class="btn btn-xs btn-primary form-btn" ng-click="toggleAddResidentForm()">Add New Resident</btn>
+</div>
