@@ -5,12 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Green Card Holders</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <link rel="stylesheet" type="text/css" href="css/gcStyle.css">
+  <link rel="stylesheet" type="text/css" href="https://dl.dropboxusercontent.com/s/9itv6gp4q7kscrc/gcStyle.css?dl=0">
 </head>
 
 <body ng-app="gcApp" ng-controller="gcControl">
 	
-	<nav class="navbar navbar-inverse myNavBar">
+	<nav class="navbar navbar-inverse myNavBar" id="navBar" ng-cloak>
 		<div class="container-fluid navBarContainer">
 			<div class="myHeader">
 				<a class="titleText" href="#"><h2>{{titleMsg}}</h2></a>
@@ -18,29 +18,175 @@
 		</div>
 	</nav>
 
-	<div class="container">
+	<div class="container" ng-cloak>
 
 		<div class="col-sm-12 myFilter">
 
-			<div ng-include="'includes/filterForm.html'"></div>
+			<!-- <div ng-include="'includes/filterForm.html'"></div>
 			<div ng-include="'includes/newResidentForm.html'"></div>
-			<div ng-include="'includes/editResidentForm.html'"></div>
+			<div ng-include="'includes/editResidentForm.html'"></div> -->
+
+			<div class="row price-form-row" ng-show="!addNewResident && !editResident">
+
+				<h3>Filter By</h3>
+				<div class="col-sm-6">
+					<div class="input-group">
+						<span class="input-group-addon">Profession</span>
+						<input type="text" class="form-control" ng-model="profession" ng-change="applyProfessionFilter(profession)">
+					</div>
+				</div>
+				<div class="col-sm-6">
+					<div class="input-group">
+						<span class="input-group-addon">Age Limit</span>
+						<select name="ageLimit" class="form-control" ng-model="ageLimit" ng-change="applyAgeFilter(ageLimit)">
+							<option value="none">All</option>
+							<option value="1">Below 25</option>
+							<option value="2">25 - 35</option>
+							<option value="3">Above 35</option>
+						</select>
+					</div>
+				</div>
+
+				<btn class="btn btn-xs btn-primary form-btn" ng-click="toggleAddResidentForm()">Add New Resident</btn>
+			</div>
+			
+
+			<div class="resident-form" ng-show="addNewResident">
+
+				<div class="row resident-form-row">
+
+					<h3>Add New Resident</h3>
+				
+					<div class="col-sm-6">
+						<div class="input-group">
+							<span class="input-group-addon">First Name</span>
+							<input type="text" placeholder="First Name" class="form-control" ng-model="newResident.firstName">
+						</div>
+					</div>
+
+					<div class="col-sm-6">
+						<div class="input-group">
+							<span class="input-group-addon">Last Name</span>
+							<input type="text" placeholder="Last Name" class="form-control" ng-model="newResident.lastName">
+						</div>
+					</div>
+
+					<div class="col-sm-6 row-top-buffer">
+						<div class="input-group">
+							<span class="input-group-addon">Profession</span>
+							<input type="text" placeholder="Profession" class="form-control" ng-model="newResident.profession">
+						</div>
+					</div>
+
+					<div class="col-sm-6 row-top-buffer">
+						<div class="input-group">
+							<span class="input-group-addon">Age</span>
+							<input type="text" placeholder="Age" class="form-control" ng-model="newResident.age">
+						</div>
+					</div>
+
+					<btn class="btn btn-xs btn-primary form-btn" ng-click="addResident()">Submit New Resident</btn>
+
+					<div class="col-sm-12 row-top-buffer">
+						<pre>{{newResident | json}}</pre>
+					</div>
+
+					<btn class="btn btn-xs btn-danger form-btn closeBtn" ng-click="toggleAddResidentForm()">Close</btn>
+					
+				</div>				
+			</div>
+
+
+			<div class="resident-form" ng-show="editResident">
+
+				<div class="row resident-form-row">
+
+					<h3>Edit Resident</h3>
+				
+					<div class="col-sm-6">
+						<div class="input-group">
+							<span class="input-group-addon">First Name</span>
+							<input type="text" placeholder="First Name" class="form-control" ng-model="editedResident.firstName">
+						</div>
+					</div>
+
+					<div class="col-sm-6">
+						<div class="input-group">
+							<span class="input-group-addon">Last Name</span>
+							<input type="text" placeholder="Last Name" class="form-control" ng-model="editedResident.lastName">
+						</div>
+					</div>
+
+					<div class="col-sm-6 row-top-buffer">
+						<div class="input-group">
+							<span class="input-group-addon">Profession</span>
+							<input type="text" placeholder="Profession" class="form-control" ng-model="editedResident.profession">
+						</div>
+					</div>
+
+					<div class="col-sm-6 row-top-buffer">
+						<div class="input-group">
+							<span class="input-group-addon">Age</span>
+							<input type="text" placeholder="Age" class="form-control" ng-model="editedResident.age">
+						</div>
+					</div>
+
+					<btn class="btn btn-xs btn-primary form-btn" ng-show="editResident" ng-click="updateResident()">Update Resident</btn>
+
+					<div class="col-sm-12 row-top-buffer">
+						<pre>{{editedResident | json}}</pre>
+					</div>
+
+					<btn class="btn btn-xs btn-danger form-btn closeBtn" ng-click="toggleEditResidentForm()">Close</btn>
+					
+				</div>				
+			</div>
+
 
 		</div>
 	</div>
 
-	<div ng-include="'includes/residentContainer.html'"></div>		
+	<!-- <div ng-include="'includes/residentContainer.html'"></div>		 -->
 
 
-	
+	<div class="container" ng-cloak>
+		<div class="col-sm-3" ng-repeat="resident in residents | filter: {'profession' : profession} | gcFilter: ageLimit | filter: resident.age">
+			<div class="thumbnail">
+				<img class="profileImage" ng-cloak ng-src="{{resident.imageUrl}}" alt="ImageText">
+				<div class="caption">
+					<div ng-show="showDetails">
+						<h5>{{"Job : " + resident.profession}}</h5>
+						<h5>{{"Age : " + resident.age + " years"}}</h5>
+					</div>
+					<btn class="btn btn-xs btn-success" ng-show="showDetails" ng-click="showDetails = !showDetails">
+						Hide Details
+					</btn>
+
+					<div ng-show="!showDetails">
+						<h5>{{"First Name : " + resident.firstName}}</h5>
+						<h5>{{"Last Name : " + resident.lastName}}</h5>
+					</div>
+					<btn class="btn btn-xs btn-success" ng-show="!showDetails" ng-click="showDetails = !showDetails">
+						Show Details
+					</btn>
+					<btn class="btn btn-xs btn-primary editBtn" ng-show="!addNewResident" ng-click="showEditResident(resident)">
+						Edit
+					</btn>				
+					<!-- <btn class="btn btn-xs btn-danger deleteBtn" ng-show="!addNewResident" ng-click="deleteResident(resident)">
+						Delete
+					</btn> -->
+				</div>				
+			</div>
+		</div>
+	</div>
 
 </body>
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.1.1/ui-bootstrap.min.js"></script>	
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.1.1/ ui-bootstrap-tpls.min.js"></script>
-	<script src="js/gcApp.js"></script>
-	<script src="js/gcController.js"></script>
-	<script src="js/gcFactory.js"></script>
-	<script src="js/gcFilter.js"></script>
-	<script src="js/gcConfig.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.1.1/ui-bootstrap.min.js"></script>
+	<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.1.1/ ui-bootstrap-tpls.min.js"></script> -->
+	<script src="https://dl.dropboxusercontent.com/s/qjs7kxvivszbxz7/gcApp.js?dl=0"></script>
+	<script src="https://dl.dropboxusercontent.com/s/5abt1u2ek1ggwpw/gcController.js?dl=0"></script>
+	<script src="https://dl.dropboxusercontent.com/s/ap6k0hye1cnogec/gcFactory.js?dl=0"></script>
+	<script src="https://dl.dropboxusercontent.com/s/ig3g6s6snt8ahyu/gcFilter.js?dl=0"></script>
+	<script src="https://dl.dropboxusercontent.com/s/qmt0k48fqwpps8b/gcConfig.js?dl=0"></script>
 </html>

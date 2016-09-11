@@ -35,7 +35,8 @@ angular.module("gcApp")
         	$scope.profession = prof;
         }
 
-        $scope.addResident = function(){   
+        $scope.addResident = function(){
+            $scope.newResident.imageUrl = "https://dl.dropboxusercontent.com/s/4n40s52m59uqd5f/defaultImage.jpg?dl=0";  
         	gcFactory.addResident($scope.newResident).then($scope.success, $scope.error);        	
         	$scope.newResident = {};
         }
